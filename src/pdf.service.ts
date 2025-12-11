@@ -23,6 +23,8 @@ export class PdfService {
   generatePdf(): Promise<Buffer> {
     const docDefinition: TDocumentDefinitions = {
       pageSize: 'A4',
+      pageMargins: [20, 20, 20, 20],
+
       content: [
         // Header
         {
@@ -31,10 +33,9 @@ export class PdfService {
             body: [
               [
                 {
-                  fillColor: '#005AAA', // Primary Blue
+                  fillColor: '#005AAA',
                   stack: [
                     {
-                      // Circle background with receipt icon centered inside
                       svg: `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 96 96">
                         <circle cx="48" cy="48" r="40" fill="#E6F3FF" stroke="#005AAA" stroke-width="3"/>
                         <g transform="translate(24, 24) scale(2)" stroke="#005AAA" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -68,23 +69,27 @@ export class PdfService {
           },
           layout: 'noBorders',
         },
-        // Body (Gray background)
+        // Body
         {
           table: {
             widths: ['*'],
             body: [
               [
                 {
-                  fillColor: '#F3F5F7', // Body Background
+                  fillColor: '#F3F5F7',
                   stack: [
                     { text: 'Empresa', style: 'label' },
                     { text: 'La Ibérica', style: 'value', margin: [0, 0, 0, 15] },
-                    
+
                     { text: 'Fecha de pago:', style: 'label' },
                     { text: '16/09/2025', style: 'value', margin: [0, 0, 0, 15] },
-                    
+
                     { text: 'Descripción', style: 'label' },
-                    { text: 'Colortex. , F064-64581 ND061-15727, DRILL NARANJA, WWI/IMC, PAGO 09/01/2026', style: 'value', margin: [0, 0, 0, 20] },
+                    {
+                      text: 'Colortex. , F064-64581 ND061-15727, DRILL NARANJA, WWI/IMC, PAGO 09/01/2026',
+                      style: 'value',
+                      margin: [0, 0, 0, 20],
+                    },
                   ],
                   border: [false, false, false, false],
                   margin: [40, 30, 40, 30],
@@ -94,14 +99,14 @@ export class PdfService {
           },
           layout: 'noBorders',
         },
-        // Footer (Light Blue background)
+        // Footer
         {
           table: {
             widths: ['*'],
             body: [
               [
                 {
-                  fillColor: '#E6F3FF', // Footer Background
+                  fillColor: '#E6F3FF',
                   stack: [
                     { text: 'Monto Total', style: 'totalLabel', margin: [40, 20, 0, 8] },
                     { text: 'S/. 1.400', style: 'totalValue', margin: [40, 0, 0, 20] },
@@ -114,18 +119,19 @@ export class PdfService {
           layout: 'noBorders',
         },
       ],
+
       styles: {
         headerTitle: { fontSize: 38, bold: true, color: 'white' },
         headerSubtitle: { fontSize: 20, color: 'white' },
-        label: { fontSize: 21, color: '#566676', margin: [0, 0, 0, 4] }, // Muted
-        value: { fontSize: 24, color: '#2B333B' }, // Foreground
-        totalLabel: { fontSize: 21, color: '#005AAA' }, // Primary Blue
-        totalValue: { fontSize: 34, bold: true, color: '#005AAA' }, // Primary Blue
+        label: { fontSize: 21, color: '#566676', margin: [0, 0, 0, 4] },
+        value: { fontSize: 24, color: '#2B333B' },
+        totalLabel: { fontSize: 21, color: '#005AAA' },
+        totalValue: { fontSize: 34, bold: true, color: '#005AAA' },
       },
+
       defaultStyle: {
         font: 'Roboto',
       },
-      pageMargins: [0, 0, 0, 0],
     };
 
     return new Promise((resolve, reject) => {
