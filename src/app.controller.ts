@@ -1,11 +1,11 @@
 import { Controller, Get, Res } from '@nestjs/common';
 import { AppService } from './app.service';
-import { PdfService } from './pdf.service';
+import { ComprobanteService } from './comprobante.service';
 import type { Response } from 'express';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private readonly pdfService: PdfService) {}
+  constructor(private readonly appService: AppService, private readonly comprobanteService: ComprobanteService) {}
 
   @Get()
   getHello(): string {
@@ -14,7 +14,7 @@ export class AppController {
 
   @Get('generate')
   async generatePdf(@Res() res: Response) {
-    const buffer = await this.pdfService.generatePdf();
+    const buffer = await this.comprobanteService.generateComprobante();
     res.set({
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'inline; filename=comprobante.pdf',
