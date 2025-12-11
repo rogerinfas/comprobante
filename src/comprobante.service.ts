@@ -108,8 +108,8 @@ export class ComprobanteService {
       ],
 
       styles: {
-        headerTitle: { fontSize: 34, color: 'white' },
-        headerSubtitle: { fontSize: 22, bold: true, color: 'white' },
+        headerTitle: { fontSize: 34, color: PdfColors.white },
+        headerSubtitle: { fontSize: 22, bold: true, color: PdfColors.white },
         label: { fontSize: 21, color: PdfColors.mutedForeground, margin: [0, 0, 0, 4] },
         value: { fontSize: 20, color: PdfColors.foreground },
         totalLabel: { fontSize: 21, color: PdfColors.primary },

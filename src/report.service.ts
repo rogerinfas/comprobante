@@ -63,7 +63,7 @@ export class ReportService {
         tableHeader: {
           bold: true,
           fontSize: 13,
-          color: 'black',
+          color: PdfColors.foreground,
           fillColor: PdfColors.sidebarAccent,
         },
       },
