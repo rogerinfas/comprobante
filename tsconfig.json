@@ -20,6 +20,14 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/pdf-printer": [
+        "libs/pdf-printer/src"
+      ],
+      "@app/pdf-printer/*": [
+        "libs/pdf-printer/src/*"
+      ]
+    }
   }
 }

@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PdfService } from './pdf.service';
 import { ComprobanteService } from './comprobante.service';
+import { PdfPrinterModule } from '@app/pdf-printer';
 
 @Module({
-  imports: [],
+  imports: [PdfPrinterModule],
   controllers: [AppController],
-  providers: [AppService, PdfService, ComprobanteService],
+  providers: [AppService, ComprobanteService],
 })
 export class AppModule {}

@@ -3,6 +3,18 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true
+  },
+  "projects": {
+    "pdf-printer": {
+      "type": "library",
+      "root": "libs/pdf-printer",
+      "entryFile": "index",
+      "sourceRoot": "libs/pdf-printer/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/pdf-printer/tsconfig.lib.json"
+      }
+    }
   }
 }

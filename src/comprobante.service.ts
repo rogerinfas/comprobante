@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { PdfService } from './pdf.service';
+import { PdfPrinterService } from '@app/pdf-printer';
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
 
 @Injectable()
 export class ComprobanteService {
-  constructor(private readonly pdfService: PdfService) {}
+  constructor(private readonly pdfPrinterService: PdfPrinterService) {}
 
   async generateComprobante(): Promise<Buffer> {
     const docDefinition: TDocumentDefinitions = {
@@ -121,6 +121,14 @@ export class ComprobanteService {
       },
     };
 
-    return this.pdfService.createPdf(docDefinition);
+    const pdfDoc = this.pdfPrinterService.createPdf(docDefinition);
+    
+    return new Promise((resolve, reject) => {
+      const chunks: Buffer[] = [];
+      pdfDoc.on('data', (chunk) => chunks.push(chunk));
+      pdfDoc.on('end', () => resolve(Buffer.concat(chunks)));
+      pdfDoc.on('error', (err) => reject(err));
+      pdfDoc.end();
+    });
   }
 }
