@@ -36,9 +36,9 @@ export class PdfService {
                     {
                       // Icon with white stroke
                       svg: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg>`,
-                      fit: [20, 20],
+                      fit: [25, 25],
                       alignment: 'center',
-                      margin: [0, 15, 0, 8],
+                      margin: [0, 15, 0, 10],
                     },
                     {
                       text: 'Comprobante de pago',
@@ -74,33 +74,34 @@ export class PdfService {
             { text: 'Colortex. , F064-64581 ND061-15727, DRILL NARANJA, WWI/IMC, PAGO 09/01/2026', style: 'value', margin: [0, 0, 0, 15] },
           ],
         },
-      ],
-      footer: {
-        table: {
-          widths: ['*'],
-          body: [
-            [
-              {
-                fillColor: '#F3F5F7', // Background Color
-                stack: [
-                  { text: 'Monto Total', style: 'totalLabel', margin: [20, 10, 0, 3] },
-                  { text: 'S/. 1.400', style: 'totalValue', margin: [20, 0, 0, 10] },
-                ],
-                border: [false, false, false, false],
-              },
+        // Footer (Gray background)
+        {
+          table: {
+            widths: ['*'],
+            body: [
+              [
+                {
+                  fillColor: '#F3F5F7', // Background Color
+                  stack: [
+                    { text: 'Monto Total', style: 'totalLabel', margin: [20, 10, 0, 3] },
+                    { text: 'S/. 1.400', style: 'totalValue', margin: [20, 0, 0, 10] },
+                  ],
+                  border: [false, false, false, false],
+                },
+              ],
             ],
-          ],
+          },
+          layout: 'noBorders',
+          margin: [0, 0, 0, 0],
         },
-        layout: 'noBorders',
-        margin: [0, 0, 0, 0],
-      },
+      ],
       styles: {
-        headerTitle: { fontSize: 14, bold: true, color: 'white' },
-        headerSubtitle: { fontSize: 12, color: 'white' },
-        label: { fontSize: 12, color: '#566676', margin: [0, 0, 0, 3] }, // Muted
-        value: { fontSize: 12, color: '#2B333B' }, // Foreground
-        totalLabel: { fontSize: 12, color: '#566676' },
-        totalValue: { fontSize: 15, bold: true, color: '#2B333B' },
+        headerTitle: { fontSize: 12, bold: true, color: 'white' },
+        headerSubtitle: { fontSize: 10, color: 'white' },
+        label: { fontSize: 8, color: '#566676', margin: [0, 0, 0, 2] }, // Muted
+        value: { fontSize: 10, color: '#2B333B' }, // Foreground
+        totalLabel: { fontSize: 8, color: '#566676' },
+        totalValue: { fontSize: 16, bold: true, color: '#2B333B' },
       },
       defaultStyle: {
         font: 'Roboto',
