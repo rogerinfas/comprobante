@@ -47,7 +47,7 @@ export class PdfService {
                       </svg>`,
                       fit: [80, 80],
                       alignment: 'center',
-                      margin: [0, 30, 0, 20],
+                      margin: [0, 20, 0, 10],
                     },
                     {
                       text: 'Comprobante de pago',
@@ -81,13 +81,14 @@ export class PdfService {
                     { text: 'Empresa', style: 'label' },
                     { text: 'La Ibérica', style: 'value', margin: [0, 0, 0, 15] },
 
-                    { text: 'Fecha de pago:', style: 'label' },
+                    { text: 'Fecha de pago', style: 'label' },
                     { text: '16/09/2025', style: 'value', margin: [0, 0, 0, 15] },
 
                     { text: 'Descripción', style: 'label' },
                     {
-                      text: 'Colortex. , F064-64581 ND061-15727, DRILL NARANJA, WWI/IMC, PAGO 09/01/2026',
+                      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet tincidunt feugiat. Maecenas quis porta metus. Aenean porta, metus vel pharetra commodo, purus metus bibendum sapien, vitae faucibus.',
                       style: 'value',
+                      alignment: 'justify',
                       margin: [0, 0, 0, 20],
                     },
                   ],
@@ -121,10 +122,10 @@ export class PdfService {
       ],
 
       styles: {
-        headerTitle: { fontSize: 38, bold: true, color: 'white' },
-        headerSubtitle: { fontSize: 20, color: 'white' },
+        headerTitle: { fontSize: 34, bold: true, color: 'white' },
+        headerSubtitle: { fontSize: 22, color: 'white' },
         label: { fontSize: 21, color: '#566676', margin: [0, 0, 0, 4] },
-        value: { fontSize: 24, color: '#2B333B' },
+        value: { fontSize: 20, color: '#2B333B' },
         totalLabel: { fontSize: 21, color: '#005AAA' },
         totalValue: { fontSize: 34, bold: true, color: '#005AAA' },
       },
