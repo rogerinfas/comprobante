@@ -22,7 +22,7 @@ export class PdfService {
 
   generatePdf(): Promise<Buffer> {
     const docDefinition: TDocumentDefinitions = {
-      pageSize: 'A6',
+      pageSize: 'A4',
       content: [
         // Header
         {
@@ -34,23 +34,31 @@ export class PdfService {
                   fillColor: '#005AAA', // Primary Blue
                   stack: [
                     {
-                      // Icon with white stroke
-                      svg: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg>`,
-                      fit: [25, 25],
+                      // Circle background with receipt icon centered inside
+                      svg: `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 96 96">
+                        <circle cx="48" cy="48" r="40" fill="#E6F3FF" stroke="#005AAA" stroke-width="3"/>
+                        <g transform="translate(24, 24) scale(2)" stroke="#005AAA" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M13 16H8"/>
+                          <path d="M14 8H8"/>
+                          <path d="M16 12H8"/>
+                          <path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/>
+                        </g>
+                      </svg>`,
+                      fit: [80, 80],
                       alignment: 'center',
-                      margin: [0, 15, 0, 10],
+                      margin: [0, 30, 0, 20],
                     },
                     {
                       text: 'Comprobante de pago',
                       style: 'headerTitle',
                       alignment: 'center',
-                      margin: [0, 0, 0, 3],
+                      margin: [0, 0, 0, 8],
                     },
                     {
                       text: 'N° de Factura: 1234566710',
                       style: 'headerSubtitle',
                       alignment: 'center',
-                      margin: [0, 0, 0, 15],
+                      margin: [0, 0, 0, 25],
                     },
                   ],
                   border: [false, false, false, false],
@@ -60,31 +68,43 @@ export class PdfService {
           },
           layout: 'noBorders',
         },
-        // Body
-        {
-          margin: [20, 15, 20, 0],
-          stack: [
-            { text: 'Empresa', style: 'label' },
-            { text: 'La Ibérica', style: 'value', margin: [0, 0, 0, 10] },
-            
-            { text: 'Fecha de pago:', style: 'label' },
-            { text: '16/09/2025', style: 'value', margin: [0, 0, 0, 10] },
-            
-            { text: 'Descripción', style: 'label' },
-            { text: 'Colortex. , F064-64581 ND061-15727, DRILL NARANJA, WWI/IMC, PAGO 09/01/2026', style: 'value', margin: [0, 0, 0, 15] },
-          ],
-        },
-        // Footer (Gray background)
+        // Body (Gray background)
         {
           table: {
             widths: ['*'],
             body: [
               [
                 {
-                  fillColor: '#F3F5F7', // Background Color
+                  fillColor: '#F3F5F7', // Body Background
                   stack: [
-                    { text: 'Monto Total', style: 'totalLabel', margin: [20, 10, 0, 3] },
-                    { text: 'S/. 1.400', style: 'totalValue', margin: [20, 0, 0, 10] },
+                    { text: 'Empresa', style: 'label' },
+                    { text: 'La Ibérica', style: 'value', margin: [0, 0, 0, 15] },
+                    
+                    { text: 'Fecha de pago:', style: 'label' },
+                    { text: '16/09/2025', style: 'value', margin: [0, 0, 0, 15] },
+                    
+                    { text: 'Descripción', style: 'label' },
+                    { text: 'Colortex. , F064-64581 ND061-15727, DRILL NARANJA, WWI/IMC, PAGO 09/01/2026', style: 'value', margin: [0, 0, 0, 20] },
+                  ],
+                  border: [false, false, false, false],
+                  margin: [40, 30, 40, 30],
+                },
+              ],
+            ],
+          },
+          layout: 'noBorders',
+        },
+        // Footer (Light Blue background)
+        {
+          table: {
+            widths: ['*'],
+            body: [
+              [
+                {
+                  fillColor: '#E6F3FF', // Footer Background
+                  stack: [
+                    { text: 'Monto Total', style: 'totalLabel', margin: [40, 20, 0, 8] },
+                    { text: 'S/. 1.400', style: 'totalValue', margin: [40, 0, 0, 20] },
                   ],
                   border: [false, false, false, false],
                 },
@@ -92,16 +112,15 @@ export class PdfService {
             ],
           },
           layout: 'noBorders',
-          margin: [0, 0, 0, 0],
         },
       ],
       styles: {
-        headerTitle: { fontSize: 12, bold: true, color: 'white' },
-        headerSubtitle: { fontSize: 10, color: 'white' },
-        label: { fontSize: 8, color: '#566676', margin: [0, 0, 0, 2] }, // Muted
-        value: { fontSize: 10, color: '#2B333B' }, // Foreground
-        totalLabel: { fontSize: 8, color: '#566676' },
-        totalValue: { fontSize: 16, bold: true, color: '#2B333B' },
+        headerTitle: { fontSize: 38, bold: true, color: 'white' },
+        headerSubtitle: { fontSize: 20, color: 'white' },
+        label: { fontSize: 21, color: '#566676', margin: [0, 0, 0, 4] }, // Muted
+        value: { fontSize: 24, color: '#2B333B' }, // Foreground
+        totalLabel: { fontSize: 21, color: '#005AAA' }, // Primary Blue
+        totalValue: { fontSize: 34, bold: true, color: '#005AAA' }, // Primary Blue
       },
       defaultStyle: {
         font: 'Roboto',
