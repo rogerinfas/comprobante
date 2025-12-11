@@ -123,7 +123,7 @@ export class PdfService {
 
       styles: {
         headerTitle: { fontSize: 34, bold: true, color: 'white' },
-        headerSubtitle: { fontSize: 22, color: 'white' },
+        headerSubtitle: { fontSize: 22, bold: true, color: 'white' },
         label: { fontSize: 21, color: '#566676', margin: [0, 0, 0, 4] },
         value: { fontSize: 20, color: '#2B333B' },
         totalLabel: { fontSize: 21, color: '#005AAA' },
