@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PdfPrinterService } from '@app/pdf-printer';
+import { PdfPrinterService, PdfColors } from '@app/pdf-printer';
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
 
 @Injectable()
@@ -24,7 +24,7 @@ export class ReportService {
         margin: [0, 20, 0, 0],
         fontSize: 24,
         bold: true,
-        color: '#005AAA',
+        color: PdfColors.primary,
       },
       content: [
         {
@@ -64,7 +64,7 @@ export class ReportService {
           bold: true,
           fontSize: 13,
           color: 'black',
-          fillColor: '#E6F3FF',
+          fillColor: PdfColors.sidebarAccent,
         },
       },
       defaultStyle: {

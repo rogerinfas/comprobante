@@ -5,7 +5,8 @@ This library provides a wrapper around `pdfmake` to simplify PDF generation in N
 ## Features
 
 -   **Generic PDF Generation**: Create any PDF layout using standard `pdfmake` document definitions.
--   **Custom Fonts**: Pre-configured support for **Roboto** and **Outfit** fonts.
+-   **Custom Fonts**: Pre-configured support for **Outfit** font.
+-   **Centralized Colors**: Pre-defined color palette matching the design system.
 -   **NestJS Integration**: Easily injectable service (`PdfPrinterService`).
 
 ## Installation

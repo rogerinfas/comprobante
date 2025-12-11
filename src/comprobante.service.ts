@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PdfPrinterService } from '@app/pdf-printer';
+import { PdfPrinterService, PdfColors } from '@app/pdf-printer';
 import { TDocumentDefinitions } from 'pdfmake/interfaces';
 
 @Injectable()
@@ -19,12 +19,12 @@ export class ComprobanteService {
             body: [
               [
                 {
-                  fillColor: '#005AAA',
+                  fillColor: PdfColors.primary,
                   stack: [
                     {
                       svg: `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 96 96">
-                        <circle cx="48" cy="48" r="40" fill="#E6F3FF" stroke="#005AAA" stroke-width="3"/>
-                        <g transform="translate(24, 24) scale(2)" stroke="#005AAA" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="48" cy="48" r="40" fill="${PdfColors.sidebarAccent}" stroke="${PdfColors.primary}" stroke-width="3"/>
+                        <g transform="translate(24, 24) scale(2)" stroke="${PdfColors.primary}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path d="M13 16H8"/>
                           <path d="M14 8H8"/>
                           <path d="M16 12H8"/>
@@ -62,7 +62,7 @@ export class ComprobanteService {
             body: [
               [
                 {
-                  fillColor: '#F3F5F7',
+                  fillColor: PdfColors.background,
                   stack: [
                     { text: 'Empresa', style: 'label' },
                     { text: 'La Ibérica', style: 'value', margin: [0, 0, 0, 15] },
@@ -93,7 +93,7 @@ export class ComprobanteService {
             body: [
               [
                 {
-                  fillColor: '#E6F3FF',
+                  fillColor: PdfColors.sidebarAccent,
                   stack: [
                     { text: 'Monto Total', style: 'totalLabel', margin: [40, 20, 0, 8] },
                     { text: 'S/. 1.400', style: 'totalValue', margin: [40, 0, 0, 20] },
@@ -108,12 +108,12 @@ export class ComprobanteService {
       ],
 
       styles: {
-        headerTitle: { fontSize: 34, bold: true, color: 'white' },
+        headerTitle: { fontSize: 34, color: 'white' },
         headerSubtitle: { fontSize: 22, bold: true, color: 'white' },
-        label: { fontSize: 21, color: '#566676', margin: [0, 0, 0, 4] },
-        value: { fontSize: 20, color: '#2B333B' },
-        totalLabel: { fontSize: 21, color: '#005AAA' },
-        totalValue: { fontSize: 34, bold: true, color: '#005AAA' },
+        label: { fontSize: 21, color: PdfColors.mutedForeground, margin: [0, 0, 0, 4] },
+        value: { fontSize: 20, color: PdfColors.foreground },
+        totalLabel: { fontSize: 21, color: PdfColors.primary },
+        totalValue: { fontSize: 34, bold: true, color: PdfColors.primary },
       },
 
       defaultStyle: {
