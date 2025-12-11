@@ -10,11 +10,11 @@ export class PdfService {
 
   constructor() {
     const fonts = {
-      Roboto: {
-        normal: path.join(process.cwd(), 'fonts/Roboto-Regular.ttf'),
-        bold: path.join(process.cwd(), 'fonts/Roboto-Medium.ttf'),
-        italics: path.join(process.cwd(), 'fonts/Roboto-Italic.ttf'),
-        bolditalics: path.join(process.cwd(), 'fonts/Roboto-MediumItalic.ttf'),
+      Outfit: {
+        normal: path.join(process.cwd(), 'fonts/Outfit-Regular.ttf'),
+        bold: path.join(process.cwd(), 'fonts/Outfit-Bold.ttf'),
+        italics: path.join(process.cwd(), 'fonts/Outfit-Regular.ttf'),
+        bolditalics: path.join(process.cwd(), 'fonts/Outfit-Bold.ttf'),
       },
     };
     this.printer = new PdfPrinter(fonts);
@@ -131,7 +131,7 @@ export class PdfService {
       },
 
       defaultStyle: {
-        font: 'Roboto',
+        font: 'Outfit',
       },
     };
 
