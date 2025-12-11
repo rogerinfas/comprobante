@@ -7,12 +7,6 @@ import * as path from 'path';
 const PDF_LIBRARY_PATH = process.env.PDF_LIBRARY_PATH ?? 'libs/pdf-printer/src/config/fonts';
 
 const fonts = {
-    Roboto: {
-        normal: path.join(process.cwd(), `${PDF_LIBRARY_PATH}/Roboto/static/Roboto-Regular.ttf`),
-        bold: path.join(process.cwd(), `${PDF_LIBRARY_PATH}/Roboto/static/Roboto-Medium.ttf`),
-        italics: path.join(process.cwd(), `${PDF_LIBRARY_PATH}/Roboto/static/Roboto-Italic.ttf`),
-        bolditalics: path.join(process.cwd(), `${PDF_LIBRARY_PATH}/Roboto/static/Roboto-MediumItalic.ttf`),
-    },
     Outfit: {
         normal: path.join(process.cwd(), `${PDF_LIBRARY_PATH}/Outfit/Outfit-Regular.ttf`),
         bold: path.join(process.cwd(), `${PDF_LIBRARY_PATH}/Outfit/Outfit-Bold.ttf`),
